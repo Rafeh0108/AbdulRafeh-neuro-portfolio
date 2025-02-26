@@ -31,14 +31,30 @@
             <img src="results/psd_Beta_(12-30_Hz).png" alt="PSD Beta Band">
             <img src="results/psd_Gamma_(30-50_Hz).png" alt="PSD Gamma Band">
         </div>
-
-        <h2>Code Used</h2>
-        <pre><code>
+<section id="code" class="card">
+    <h2>Code Used</h2>
+    <pre><code>
 # Example of PSD Analysis Code
-psd = raw_data.compute_psd(fmin=8, fmax=12)  # Alpha band
-psd.plot(average=True, picks='eeg', show=True)
-        </code></pre>
-    </section>
+import mne
+import matplotlib.pyplot as plt
+
+# Load the EEG data
+raw_data = mne.io.read_raw_brainvision('path/to/your/data.vhdr', preload=True)
+
+# Filter the data (1-50 Hz)
+raw_data.filter(1, 50, fir_design='firwin')
+
+# Compute Power Spectral Density (PSD) for Alpha band (8-12 Hz)
+psd, freqs = mne.time_frequency.psd_welch(raw_data, fmin=8, fmax=12, n_fft=256)
+
+# Plot the PSD
+plt.plot(freqs, psd.mean(axis=0))
+plt.title('PSD Alpha Band (8-12 Hz)')
+plt.xlabel('Frequency (Hz)')
+plt.ylabel('Power (dB)')
+plt.show()
+    </code></pre>
+</section>        
 
     <footer>
         <p>&copy; 2025 AbdulRafeh Usmani</p>
