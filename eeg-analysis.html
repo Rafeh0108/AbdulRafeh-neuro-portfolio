@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EEG Analysis - AbdulRafeh Usmani</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>EEG Data Analysis</h1>
+        <p>Exploring Brainwave Patterns through Frequency Analysis</p>
+    </header>
+
+    <section id="analysis">
+        <h2>EEG Analysis Overview</h2>
+        <p>
+            This project involved analyzing EEG data to identify patterns in different brainwave frequencies.
+            By examining the Delta, Theta, Alpha, Beta, and Gamma bands, we gained insights into cognitive states 
+            such as relaxation, deep sleep, and active thinking.
+        </p>
+        
+        <h2>Results</h2>
+        <div class="gallery">
+            <h3>Filtered EEG Data</h3>
+            <img src="results/filtered_eeg_data.png" alt="Filtered EEG Data">
+
+            <h3>Power Spectral Density (PSD) Plots</h3>
+            <img src="results/psd_Delta_(1-4_Hz).png" alt="PSD Delta Band">
+            <img src="results/psd_Theta_(4-8_Hz).png" alt="PSD Theta Band">
+            <img src="results/psd_Alpha_(8-12_Hz).png" alt="PSD Alpha Band">
+            <img src="results/psd_Beta_(12-30_Hz).png" alt="PSD Beta Band">
+            <img src="results/psd_Gamma_(30-50_Hz).png" alt="PSD Gamma Band">
+        </div>
+
+        <h2>Code Used</h2>
+        <pre><code>
+# Example of PSD Analysis Code
+psd = raw_data.compute_psd(fmin=8, fmax=12)  # Alpha band
+psd.plot(average=True, picks='eeg', show=True)
+        </code></pre>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AbdulRafeh Usmani</p>
+        <a href="index.html">Back to Home</a>
+    </footer>
+</body>
+</html>
