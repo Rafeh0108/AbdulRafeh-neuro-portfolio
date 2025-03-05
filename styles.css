@@ -215,3 +215,9 @@ a:hover {
 .gallery-item:hover {
     transform: scale(1.05);
 }
+body {
+    background: url('images/current.svg'); /* Adjust the path if needed */
+    background-repeat: repeat-y; /* Repeat vertically */
+    background-position: left, right; /* Position on both sides */
+    background-size: 150px auto; /* Adjust the width */
+}
