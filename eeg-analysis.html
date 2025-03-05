@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <!-- Navigation Menu (At the Top) -->
+    <!-- Navigation Menu -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -24,53 +24,70 @@
         <p>Exploring EEG signals to understand brain activity</p>
     </header>
 
-    <!-- Main EEG Content -->
+    <!-- Disclaimer for Potential Supervisors -->
     <section class="card">
-        <h2>About EEG Analysis</h2>
+        <h2>Note on EEG Analysis</h2>
         <p>
-            EEG (Electroencephalography) is a powerful tool for studying neural activity. 
-            This section presents insights from my EEG research and analysis.
+            This is one of my early explorations of EEG data analysis using OpenNeuro datasets.
+            As I am still learning how to decode and interpret EEG signals, some results may not be perfectly refined.
+            This project represents my ongoing development in EEG data processing.
         </p>
     </section>
 
-    <!-- EEG Analysis Overview -->
-    <section id="analysis">
-        <h2>EEG Analysis Overview</h2>
+    <!-- About EEG Analysis -->
+    <section id="about" class="card">
+        <h2>What is EEG Analysis?</h2>
         <p>
-            This project involved analyzing EEG data to identify patterns in different brainwave frequencies.
-            By examining the Delta, Theta, Alpha, Beta, and Gamma bands, we gained insights into cognitive states 
-            such as relaxation, deep sleep, and active thinking.
+            EEG (Electroencephalography) is a technique used to measure electrical activity in the brain.
+            By analyzing different brainwave frequencies, we can gain insights into states like relaxation, deep sleep, and active thinking.
         </p>
+    </section>
+
+    <!-- EEG Data Processing -->
+    <section id="processing" class="card">
+        <h2>EEG Data Processing Steps</h2>
+        <ol>
+            <li>Loaded raw EEG data from OpenNeuro datasets.</li>
+            <li>Filtered EEG signals to remove noise and artifacts.</li>
+            <li>Computed Power Spectral Density (PSD) to observe brainwave activity.</li>
+            <li>Visualized frequency bands to analyze cognitive states.</li>
+        </ol>
     </section>
 
     <!-- Results Section -->
-    <section id="results">
-        <h2>Results</h2>
-        <div class="gallery">
-            <h3>Filtered EEG Data</h3>
-            <img src="results/filtered_eeg_data.png" alt="Filtered EEG Data">
+    <section id="results" class="card">
+        <h2>Results & Visualizations</h2>
 
-            <h3>Power Spectral Density (PSD) Plots</h3>
-            <img src="results/psd_Delta_(1-4_Hz).png" alt="PSD Delta Band">
-            <img src="results/psd_Theta_(4-8_Hz).png" alt="PSD Theta Band">
-            <img src="results/psd_Alpha_(8-12_Hz).png" alt="PSD Alpha Band">
-            <img src="results/psd_Beta_(12-30_Hz).png" alt="PSD Beta Band">
-            <img src="results/psd_Gamma_(30-50_Hz).png" alt="PSD Gamma Band">
+        <!-- EEG Signal Processing -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <h3>Filtered EEG Data</h3>
+                <img src="results/filtered_eeg_data.png" alt="Filtered EEG Data">
+            </div>
+
+            <div class="gallery-item">
+                <h3>Power Spectral Density (PSD) Plots</h3>
+                <img src="results/psd_Delta_(1-4_Hz).png" alt="PSD Delta Band">
+                <img src="results/psd_Theta_(4-8_Hz).png" alt="PSD Theta Band">
+                <img src="results/psd_Alpha_(8-12_Hz).png" alt="PSD Alpha Band">
+                <img src="results/psd_Beta_(12-30_Hz).png" alt="PSD Beta Band">
+                <img src="results/psd_Gamma_(30-50_Hz).png" alt="PSD Gamma Band">
+            </div>
         </div>
     </section>
 
     <!-- Code Section -->
     <section id="code" class="card">
-        <h2>Code Used</h2>
+        <h2>Code Used for EEG Analysis</h2>
+        <p>This Python script was used to process and analyze the EEG data.</p>
         <pre><code>
-# Example of PSD Analysis Code
 import mne
 import matplotlib.pyplot as plt
 
-# Load the EEG data
+# Load EEG data from OpenNeuro dataset
 raw_data = mne.io.read_raw_brainvision('path/to/your/data.vhdr', preload=True)
 
-# Filter the data (1-50 Hz)
+# Apply band-pass filter (1-50 Hz) to remove noise
 raw_data.filter(1, 50, fir_design='firwin')
 
 # Compute Power Spectral Density (PSD) for Alpha band (8-12 Hz)
