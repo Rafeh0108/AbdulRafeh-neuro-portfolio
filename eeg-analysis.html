@@ -1,18 +1,4 @@
 <!DOCTYPE html>
-<!-- Navigation Menu -->
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="eeg-analysis.html">EEG Analysis</a></li>
-    </ul>
-</nav><html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>EEG Analysis - AbdulRafeh Usmani</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +8,7 @@
 </head>
 <body>
 
-    <!-- Navigation Menu (Now at the Top) -->
+    <!-- Navigation Menu (At the Top) -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -47,18 +33,7 @@
         </p>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 AbdulRafeh Usmani</p>
-    </footer>
-
-</body>
-</html>
-    <header>
-        <h1>EEG Data Analysis</h1>
-        <p>Exploring Brainwave Patterns through Frequency Analysis</p>
-    </header>
-
+    <!-- EEG Analysis Overview -->
     <section id="analysis">
         <h2>EEG Analysis Overview</h2>
         <p>
@@ -66,7 +41,10 @@
             By examining the Delta, Theta, Alpha, Beta, and Gamma bands, we gained insights into cognitive states 
             such as relaxation, deep sleep, and active thinking.
         </p>
-        
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
         <h2>Results</h2>
         <div class="gallery">
             <h3>Filtered EEG Data</h3>
@@ -79,9 +57,12 @@
             <img src="results/psd_Beta_(12-30_Hz).png" alt="PSD Beta Band">
             <img src="results/psd_Gamma_(30-50_Hz).png" alt="PSD Gamma Band">
         </div>
-<section id="code" class="card">
-    <h2>Code Used</h2>
-    <pre><code>
+    </section>
+
+    <!-- Code Section -->
+    <section id="code" class="card">
+        <h2>Code Used</h2>
+        <pre><code>
 # Example of PSD Analysis Code
 import mne
 import matplotlib.pyplot as plt
@@ -101,12 +82,14 @@ plt.title('PSD Alpha Band (8-12 Hz)')
 plt.xlabel('Frequency (Hz)')
 plt.ylabel('Power (dB)')
 plt.show()
-    </code></pre>
-</section>        
+        </code></pre>
+    </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 AbdulRafeh Usmani</p>
         <a href="index.html">Back to Home</a>
     </footer>
+
 </body>
 </html>
