@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stroke fMRI Analysis</title>
+    <title>Stroke fMRI Analysis | AbdulRafeh Usmani</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
+
+    <!-- Navigation Menu -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -18,71 +19,104 @@
         </ul>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Header -->
     <header>
         <h1>Stroke fMRI Analysis</h1>
         <p>My early exploration into neuroscience and coding using publicly available fMRI data.</p>
     </header>
 
-    <!-- Project Overview Section -->
+    <!-- Project Overview -->
     <section class="card">
         <h2>Project Overview</h2>
         <p>
-            This project was my first attempt at analyzing stroke fMRI data using OpenNeuro datasets.
-            My goal was to visualize brain activity changes before and after rehabilitation therapy.
+            This project was my first attempt at analyzing stroke fMRI data using OpenNeuro datasets. My goal was to visualize
+            brain activity changes before and after rehabilitation therapy.
         </p>
     </section>
 
-    <!-- Pre-Therapy Scan -->
+    <!-- Pre-Therapy fMRI Scan -->
     <section class="card">
         <h2>fMRI Pre-Therapy Scan</h2>
         <p>This is a brain slice from the fMRI scan taken before stroke rehabilitation.</p>
-        <img src="images/Middle Slice of fMRI Data (timepoint 81).png" alt="Pre-Therapy fMRI Slice" class="responsive-img">
+        <img src="images/Middle Slice of fMRI Data (timepoint 81).png" alt="Pre-Therapy fMRI Slice">
     </section>
 
-    <!-- Post-Therapy Scan -->
+    <!-- Post-Therapy fMRI Scan -->
     <section class="card">
         <h2>fMRI Post-Therapy Scan</h2>
-        <p>Post-rehabilitation brain activity changes.</p>
-        <img src="images/Middle Slice of Post-Stroke MRI Data (Timepoint 81).png" alt="Post-Therapy fMRI Slice" class="responsive-img">
+        <p>This is a brain slice from the fMRI scan after rehabilitation therapy.</p>
+        <img src="images/Middle Slice of Post-Stroke MRI Data (Timepoint 81).png" alt="Post-Therapy fMRI Slice">
     </section>
 
-    <!-- Voxel-Wise Difference Map -->
+    <!-- Comparing Pre vs Post Therapy -->
     <section class="card">
-        <h2>Voxel-Wise Difference Map (Post - Pre fMRI)</h2>
-        <p>This visualization highlights areas with the most significant changes in brain activity.</p>
-        <img src="images/Voxel-Wise Difference: Post - Pre fMRI.png" alt="Voxel-Wise Difference Map" class="responsive-img">
-    </section>
-
-    <!-- Histogram Analysis -->
-    <section class="card">
-        <h2>Histogram of Voxel-Wise Changes</h2>
-        <p>This histogram quantifies how much the BOLD signal changed across all voxels.</p>
-        <img src="images/Distribution of Voxel-Wise Changes (Post - Pre fMRI).png" alt="Histogram of Voxel-Wise Changes" class="responsive-img">
-    </section>
-
-    <!-- Interpretation of Results -->
-    <section class="card">
-        <h2>Interpretation of Results</h2>
+        <h2>Changes in Brain Activity (Pre vs Post Therapy)</h2>
         <p>
-            This project served as my **first hands-on experience** with analyzing fMRI datasets.
-            While I aimed to find clear visual markers of stroke rehabilitation effects, some challenges remained:
+            The heatmap below represents the voxel-wise difference between post- and pre-therapy fMRI scans. Red regions indicate increased
+            activity post-therapy, while blue regions indicate decreased activity.
+        </p>
+        <img src="images/Voxel-Wise Difference: Post - Pre fMRI.png" alt="Voxel-Wise Difference">
+    </section>
+
+    <!-- Statistical Analysis -->
+    <section class="card">
+        <h2>Statistical Analysis of Changes</h2>
+        <p>
+            This histogram quantifies how much the BOLD signal changed across all voxels. The average change was <strong>~1.65</strong>, meaning there was
+            a slight overall increase in activation, with some regions showing more extreme changes.
+        </p>
+        <img src="images/Distribution of Voxel-Wise Changes (Post - Pre fMRI).png" alt="Histogram of Voxel-Wise Changes">
+    </section>
+
+    <!-- The Process (How I Did It) -->
+    <section class="card">
+        <h2>How I Did This Analysis</h2>
+        <p>
+            This project involved several key steps:
         </p>
         <ul>
-            <li>💡 **Lesion Mapping Challenges** – We struggled to clearly locate and highlight stroke lesions.</li>
-            <li>🖥️ **Data Alignment Issues** – Pre and post-therapy scans were difficult to align perfectly.</li>
-            <li>📊 **Interpreting Results** – We found significant changes, but precise conclusions need more expertise.</li>
+            <li>Finding a relevant fMRI dataset from <a href="https://openneuro.org">OpenNeuro</a>.</li>
+            <li>Using Python (Nilearn, Nibabel, Matplotlib) to process and visualize the data.</li>
+            <li>Extracting slices from 4D fMRI data and comparing voxel-wise differences.</li>
+            <li>Creating a histogram to summarize changes in brain activity.</li>
+        </ul>
+    </section>
+
+    <!-- Challenges & Failures -->
+    <section class="card">
+        <h2>What Didn’t Work</h2>
+        <p>
+            Not everything went smoothly! Some major setbacks I faced:
+        </p>
+        <ul>
+            <li>Struggled to correctly align pre- and post-therapy MRI scans, leading to some misaligned comparisons.</li>
+            <li>Failed attempts at visualizing the lesion location due to mismatched affine transformations.</li>
+            <li>Initially, my voxel-wise change visualization wasn’t highlighting differences correctly.</li>
+            <li>Spent too much time debugging color mapping instead of focusing on meaningful interpretations.</li>
         </ul>
         <p>
-            Despite these challenges, this analysis **helped me gain experience** in fMRI data processing,
-            voxel-wise comparisons, and visualization techniques. This is only my first step into neuroscience
-            and coding using real-world brain imaging data!
+            These challenges taught me a lot about neuroimaging, affine transformations, and the importance of checking my data step-by-step before
+            visualizing results.
         </p>
+    </section>
+
+    <!-- Future Directions -->
+    <section class="card">
+        <h2>Future Directions</h2>
+        <p>
+            This was just my first step into neuroimaging analysis. Moving forward, I’d like to:
+        </p>
+        <ul>
+            <li>Improve lesion detection by using machine learning-based segmentation techniques.</li>
+            <li>Refine the pre/post MRI alignment to ensure voxel comparisons are accurate.</li>
+            <li>Explore how different types of rehabilitation therapies impact brain recovery over time.</li>
+        </ul>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 AbdulRafeh Usmani</p>
     </footer>
+
 </body>
 </html>
