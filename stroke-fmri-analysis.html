@@ -1,1 +1,71 @@
 <li><a href="results/stroke-fmri-analysis.html">Stroke fMRI Analysis</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stroke fMRI Analysis</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Ensure this links to your CSS -->
+</head>
+<body>
+
+    <header>
+        <h1>Stroke fMRI Analysis</h1>
+        <p>My early exploration into neuroscience and coding using publicly available fMRI data.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Project Overview</h2>
+            <p>This project was my first attempt at analyzing stroke fMRI data using OpenNeuro datasets. My goal was to visualize brain activity changes before and after rehabilitation therapy.</p>
+        </section>
+
+        <section>
+            <h2>fMRI Pre-Therapy Scan</h2>
+            <p>This is a brain slice from the fMRI scan taken before stroke rehabilitation.</p>
+            <img src="../images/Middle Slice of fMRI Data (timepoint 81).png" alt="Pre-Therapy fMRI Slice" width="500">
+        </section>
+
+        <section>
+            <h2>Voxel-Wise Differences (Post - Pre fMRI)</h2>
+            <p>This heatmap visualizes the difference in brain activity between post-therapy and pre-therapy scans.</p>
+            <img src="../images/Voxel-Wise Difference: Post - Pre fMRI.png" alt="Voxel-Wise Difference" width="500">
+        </section>
+
+        <section>
+            <h2>Statistical Findings</h2>
+            <p>Here is the distribution of voxel-wise BOLD signal changes. Most changes were minor, with some areas showing significant variations.</p>
+            <img src="../images/Distribution of Voxel-Wise Changes (Post - Pre fMRI).png" alt="Histogram of BOLD Signal Changes" width="500">
+        </section>
+
+        <section>
+            <h2>Identifying the Lesion</h2>
+            <p>We attempted to overlay the lesion mask on the post-stroke MRI, but encountered alignment challenges.</p>
+            <img src="../images/results.png" alt="Lesion Overlay" width="500">
+        </section>
+
+        <section>
+            <h2>Key Insights & Interpretation</h2>
+            <p>Here is the summary of our findings and what we can infer.</p>
+            <img src="../images/Interpretation of Results.png" alt="Interpretation of Results" width="500">
+        </section>
+
+        <section>
+            <h2>Challenges & Future Work</h2>
+            <p>While we made some progress, we faced issues with lesion localization and full therapy interpretation.</p>
+            <ul>
+                <li>We couldn't precisely align the lesion mask with the MRI.</li>
+                <li>Finding detailed information on the exact rehabilitation therapy was challenging.</li>
+                <li>This was an early step in my journey into neuroscience data analysis.</li>
+            </ul>
+            <p>Next steps include improving alignment techniques and exploring stroke therapy details further.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Abdullah Usmani</p>
+    </footer>
+
+</body>
+</html>
