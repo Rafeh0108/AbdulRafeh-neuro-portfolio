@@ -142,6 +142,63 @@ plt.show()
             and refine my analytical methods!
         </p>
     </section>
+    <section class="card">
+    <h2>Failed Attempts: Challenges in Visualizing the Lesion</h2>
+    <p>
+        Throughout this project, I ran into several roadblocks when trying to correctly visualize the lesion. 
+        I attempted multiple approaches, adjusting different parameters, but often the lesion was misaligned, missing, or incorrectly overlaid.
+    </p>
+
+    <h3>Example of Failed Visualizations</h3>
+    <p>Here are some of my unsuccessful attempts to overlay the lesion on the post-stroke MRI scan:</p>
+
+    <div class="image-gallery">
+        <figure>
+            <img src="images/Failed attempt 1.png" alt="Failed Attempt 1">
+            <figcaption>First attempt – The lesion was not visible at all.</figcaption>
+        </figure>
+        <figure>
+            <img src="images/Failed attempt 2.png" alt="Failed Attempt 2">
+            <figcaption>Second attempt – Misalignment of lesion mask with the brain.</figcaption>
+        </figure>
+        <figure>
+            <img src="images/Failed attempt 3.png" alt="Failed Attempt 3">
+            <figcaption>Third attempt – The lesion appears outside the brain structure.</figcaption>
+        </figure>
+    </div>
+
+    <h3>Code That Didn't Work</h3>
+    <p>
+        One of the major issues was aligning the lesion mask with the MRI scan. 
+        Below is a snippet of an early failed approach where the resampling caused misalignment.
+    </p>
+    
+    <pre>
+import nibabel as nib
+from nilearn.image import resample_to_img
+
+# Load images
+lesion_mask = nib.load("lesion_mask.nii.gz")
+post_mri = nib.load("sub-01_ses-post_T1w.nii.gz")
+
+# Attempt to resample (This led to misalignment)
+resampled_lesion_mask = resample_to_img(lesion_mask, post_mri, interpolation="nearest")
+
+# Displaying the lesion mask caused incorrect overlay
+    </pre>
+
+    <p>
+        The issue turned out to be mismatched affine matrices between the fMRI scan and the lesion mask.
+        This resulted in the lesion appearing in the wrong part of the image or even outside the brain structure.
+    </p>
+
+    <h3>Lessons Learned</h3>
+    <ul>
+        <li>Ensuring affine matrices are correctly aligned is crucial when working with MRI data.</li>
+        <li>Visualization issues often stem from preprocessing errors, not just the dataset itself.</li>
+        <li>Debugging medical imaging data requires patience and iteration, especially when dealing with multi-dimensional data.</li>
+    </ul>
+</section>
         <!-- Note on My Learning Process -->
     <section class="card">
         <h2>Note on My Learning Process</h2>
