@@ -1,9 +1,9 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background: url('images/diagonal-stripes.svg') repeat; /* Modern background pattern */
-    background-size: 150px; /* Adjust pattern size */
-    background-color: #fafafa; /* Soft fallback color */
+    background: url('images/diagonal-stripes.svg') repeat;
+    background-size: 150px;
+    background-color: #0b6623; /* Forest Green */
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -12,7 +12,7 @@ body {
 
 /* Navigation Bar */
 nav {
-    background-color: #222; /* Dark gray for a cleaner look */
+    background-color: #222; /* Dark gray for contrast */
     padding: 15px 0;
     position: sticky;
     top: 0;
@@ -42,17 +42,17 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffa500; /* Orange highlight on hover */
+    color: #ffcc00; /* Gold highlight */
 }
 
 /* Header */
 header {
-    background-color: #4a90e2; /* Softer blue */
+    background-color: #004225; /* Deep green (dark forest) */
     color: white;
     padding: 50px 20px;
     text-align: center;
     margin-bottom: 30px;
-    border-bottom: 5px solid #ffa500;
+    border-bottom: 4px solid #ffcc00; /* Gold accent */
 }
 
 h1 {
@@ -67,7 +67,7 @@ p {
 
 /* Card Style */
 .card {
-    background-color: white;
+    background-color: #fdf5e6; /* Cream/Beige */
     margin: 20px auto;
     padding: 25px;
     max-width: 850px;
@@ -105,7 +105,7 @@ footer {
 .pdf-link {
     display: inline-block;
     padding: 12px 18px;
-    background-color: #4a90e2;
+    background-color: #004225;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -114,7 +114,7 @@ footer {
 }
 
 .pdf-link:hover {
-    background-color: #357abd;
+    background-color: #ffcc00;
 }
 
 /* Papers of Interest Section */
@@ -152,13 +152,13 @@ footer {
 
 /* Hyperlinks */
 a {
-    color: #4a90e2;
+    color: #004225;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
-    color: #ffa500;
+    color: #ffcc00;
     text-decoration: underline;
 }
 
@@ -177,7 +177,7 @@ a:hover {
 #contact a {
     display: inline-block;
     font-size: 18px;
-    color: #4a90e2;
+    color: #004225;
     text-decoration: none;
     font-weight: bold;
     padding: 12px;
@@ -188,7 +188,7 @@ a:hover {
 
 #contact a:hover {
     background: #d0e0ff;
-    color: #ffa500;
+    color: #ffcc00;
 }
 
 /* Lab Gallery Grid */
