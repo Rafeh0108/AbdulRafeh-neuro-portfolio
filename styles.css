@@ -1,9 +1,9 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background: url('images/leaves.jpeg') repeat; /* Background pattern */
-    background-size: 200px; /* Adjust size to fit pattern */
-    background-color: #f5f5f5; /* Fallback color */
+    background: url('images/diagonal-stripes.svg') repeat; /* Modern background pattern */
+    background-size: 150px; /* Adjust pattern size */
+    background-color: #fafafa; /* Soft fallback color */
     margin: 0;
     padding: 0;
     line-height: 1.6;
@@ -12,13 +12,13 @@ body {
 
 /* Navigation Bar */
 nav {
-    background-color: #0044cc;
+    background-color: #222; /* Dark gray for a cleaner look */
     padding: 15px 0;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -34,7 +34,7 @@ nav li {
 }
 
 nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
@@ -42,16 +42,17 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffcc00;
+    color: #ffa500; /* Orange highlight on hover */
 }
 
 /* Header */
 header {
-    background-color: #3366cc;
+    background-color: #4a90e2; /* Softer blue */
     color: white;
     padding: 50px 20px;
     text-align: center;
     margin-bottom: 30px;
+    border-bottom: 5px solid #ffa500;
 }
 
 h1 {
@@ -70,13 +71,18 @@ p {
     margin: 20px auto;
     padding: 25px;
     max-width: 850px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #222;
     color: white;
     text-align: center;
     padding: 15px 0;
@@ -91,15 +97,15 @@ footer {
     height: auto;
     display: block;
     margin: 15px auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* PDF Download Link */
 .pdf-link {
     display: inline-block;
     padding: 12px 18px;
-    background-color: #0044cc;
+    background-color: #4a90e2;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -108,7 +114,7 @@ footer {
 }
 
 .pdf-link:hover {
-    background-color: #003399;
+    background-color: #357abd;
 }
 
 /* Papers of Interest Section */
@@ -126,12 +132,12 @@ footer {
     background: #fff;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
 .paper-item:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .paper-item h3 {
@@ -146,13 +152,13 @@ footer {
 
 /* Hyperlinks */
 a {
-    color: #0044cc;
+    color: #4a90e2;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
-    color: #ff6600;
+    color: #ffa500;
     text-decoration: underline;
 }
 
@@ -169,9 +175,9 @@ a:hover {
 }
 
 #contact a {
-    display: block;
+    display: inline-block;
     font-size: 18px;
-    color: #0044cc;
+    color: #4a90e2;
     text-decoration: none;
     font-weight: bold;
     padding: 12px;
@@ -182,7 +188,7 @@ a:hover {
 
 #contact a:hover {
     background: #d0e0ff;
-    color: #ff6600;
+    color: #ffa500;
 }
 
 /* Lab Gallery Grid */
@@ -191,14 +197,13 @@ a:hover {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 20px;
-    text-align: center;
 }
 
 .gallery-item {
     background: #fff;
     padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -215,5 +220,30 @@ a:hover {
 }
 
 .gallery-item:hover {
-    transform: scale(1.05);
+    transform: translateY(-5px);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
 }
