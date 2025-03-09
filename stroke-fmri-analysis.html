@@ -76,9 +76,9 @@
     <section class="card">
         <h2>Challenges & Lessons Learned</h2>
         <p>
-            This project had many hurdles. My original goal was to precisely locate the stroke lesion  
+            This project had many hurdles. My original goal was to locate the stroke lesion  
             and analyze its changes post-therapy. However, aligning the lesion mask with the fMRI scans  
-            proved difficult, resulting in visualization errors.
+            proved VERY difficult, resulting in visualization errors (I have included examples at the bottom).
         </p>
         <p>
             Some of the key challenges:
@@ -90,8 +90,7 @@
         </ul>
         <p>
             Despite these issues, I successfully visualized pre- and post-therapy fMRI differences  
-            and performed voxel-wise analysis. This was an exciting first step in combining coding  
-            with neuroscience!
+            and performed voxel-wise analysis. I will be honest, I felt very accomplished having done this fairly minor task.
         </p>
     </section>
 
@@ -105,22 +104,20 @@ import nibabel as nib
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load fMRI scans
+
 fmri_pre = nib.load("sub-01_ses-pre_task-rest_bold.nii.gz")
 fmri_post = nib.load("sub-01_ses-post_task-rest_bold.nii.gz")
 
-# Convert to numpy arrays
 fmri_pre_data = fmri_pre.get_fdata()
 fmri_post_data = fmri_post.get_fdata()
 
-# Compute voxel-wise difference
 fmri_diff = fmri_post_data - fmri_pre_data
 
-# Select middle slice for visualization
+
 slice_idx = fmri_diff.shape[-1] // 2
 diff_slice = fmri_diff[:, :, fmri_diff.shape[2] // 2, slice_idx]
 
-# Plot the voxel-wise difference
+
 plt.imshow(diff_slice.T, cmap="seismic", origin="lower", vmin=-500, vmax=500)
 plt.colorbar(label="BOLD Signal Change")
 plt.title("Voxel-Wise Difference: Post - Pre fMRI")
@@ -137,13 +134,10 @@ plt.show()
             While there were setbacks in lesion localization, I successfully performed voxel-wise  
             statistical comparisons and visualized changes in brain activity post-rehabilitation.
         </p>
-        <p>
-            In the future, I hope to improve lesion segmentation, explore different stroke datasets,  
-            and refine my analytical methods!
-        </p>
+    
     </section>
     <section class="card">
-    <h2>Failed Attempts: Challenges in Visualizing the Lesion</h2>
+    <h2>Failed Attempts :( </h2>
     <p>
         Throughout this project, I ran into several roadblocks when trying to correctly visualize the lesion. 
         I attempted multiple approaches, adjusting different parameters, but often the lesion was misaligned, missing, or incorrectly overlaid.
@@ -155,15 +149,15 @@ plt.show()
     <div class="image-gallery">
         <figure>
             <img src="images/Failed attempt 1.png" alt="Failed Attempt 1">
-            <figcaption>First attempt – The lesion was not visible at all.</figcaption>
+            <figcaption>First attempt – The scans are not aligned.</figcaption>
         </figure>
         <figure>
             <img src="images/Failed attempt 2.png" alt="Failed Attempt 2">
-            <figcaption>Second attempt – Misalignment of lesion mask with the brain.</figcaption>
+            <figcaption>Second attempt – The scans are not aligned... AGAIN.</figcaption>
         </figure>
         <figure>
             <img src="images/Failed attempt 3.png" alt="Failed Attempt 3">
-            <figcaption>Third attempt – The lesion appears outside the brain structure.</figcaption>
+            <figcaption>Third attempt – The lesion appears outside the brain structure.... WEIRD.</figcaption>
         </figure>
     </div>
 
@@ -177,14 +171,14 @@ plt.show()
 import nibabel as nib
 from nilearn.image import resample_to_img
 
-# Load images
+
 lesion_mask = nib.load("lesion_mask.nii.gz")
 post_mri = nib.load("sub-01_ses-post_T1w.nii.gz")
 
-# Attempt to resample (This led to misalignment)
+
 resampled_lesion_mask = resample_to_img(lesion_mask, post_mri, interpolation="nearest")
 
-# Displaying the lesion mask caused incorrect overlay
+
     </pre>
 
     <p>
@@ -192,13 +186,6 @@ resampled_lesion_mask = resample_to_img(lesion_mask, post_mri, interpolation="ne
         This resulted in the lesion appearing in the wrong part of the image or even outside the brain structure.
     </p>
 
-    <h3>Lessons Learned</h3>
-    <ul>
-        <li>Ensuring affine matrices are correctly aligned is crucial when working with MRI data.</li>
-        <li>Visualization issues often stem from preprocessing errors, not just the dataset itself.</li>
-        <li>Debugging medical imaging data requires patience and iteration, especially when dealing with multi-dimensional data.</li>
-    </ul>
-</section>
         <!-- Note on My Learning Process -->
     <section class="card">
         <h2>Note on My Learning Process</h2>
@@ -213,9 +200,8 @@ resampled_lesion_mask = resample_to_img(lesion_mask, post_mri, interpolation="ne
             <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a> for quick coding references</li>
         </ul>
         <p>
-            Additionally, I leverage **ChatGPT** as a tool to help me debug, optimize,  
-            and understand complex coding concepts. By integrating these resources,  
-            I am taking a **practical, hands-on approach** to learning neuroscience data analysis.
+            Additionally, I did use ChatGPT as a tool to help me debug, optimize,  
+            and understand complex coding concepts.
         </p>
     </section>
 
