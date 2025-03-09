@@ -77,16 +77,16 @@
 import mne
 import matplotlib.pyplot as plt
 
-# Load EEG data from OpenNeuro dataset
+
 raw_data = mne.io.read_raw_brainvision('path/to/your/data.vhdr', preload=True)
 
-# Apply band-pass filter (1-50 Hz) to remove noise
+
 raw_data.filter(1, 50, fir_design='firwin')
 
-# Compute Power Spectral Density (PSD) for Alpha band (8-12 Hz)
+
 psd, freqs = mne.time_frequency.psd_welch(raw_data, fmin=8, fmax=12, n_fft=256)
 
-# Plot the PSD
+
 plt.plot(freqs, psd.mean(axis=0))
 plt.title('PSD Alpha Band (8-12 Hz)')
 plt.xlabel('Frequency (Hz)')
