@@ -1,480 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Modal Sensory Deprivation Study - Abdul Rafeh Usmani</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Multi-Modal Sensory Deprivation Study - Abdul Rafeh Usmani</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+  <!-- No global CSS loaded here; everything below is scoped to .mm-page -->
+  <style>
+    /* ======== SCOPE EVERYTHING UNDER .mm-page ======== */
+    .mm-page, .mm-page * { box-sizing: border-box; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .mm-page {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      min-height: 100vh;
+      /* page background */
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+    }
 
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .mm-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .header h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .mm-header {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+    }
 
-        .header p {
-            color: #7f8c8d;
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .mm-header h1 {
+      color: #2c3e50;
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        .nav {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
+    .mm-header p {
+      color: #555;
+      font-size: 1.05em;
+      max-width: 820px;
+      margin: 0 auto;
+    }
 
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+    .mm-nav {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 14px 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
-        .nav a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background: rgba(102, 126, 234, 0.1);
-        }
+    .mm-nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+    }
 
-        .nav a:hover {
-            background: rgba(102, 126, 234, 0.2);
-            transform: translateY(-2px);
-        }
+    .mm-nav a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: transform 0.2s ease, background 0.2s ease;
+      background: rgba(102,126,234,0.10);
+    }
 
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+    .mm-nav a:hover {
+      background: rgba(102,126,234,0.20);
+      transform: translateY(-1px);
+    }
 
-        .section h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
+    .mm-section {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 26px;
+      margin-bottom: 26px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      opacity: 0;                   /* animated in via script */
+      transform: translateY(24px);  /* animated in via script */
+      transition: all 0.6s ease;
+    }
 
-        .section h3 {
-            color: #34495e;
-            font-size: 1.5em;
-            margin: 25px 0 15px 0;
-        }
+    .mm-section h2 {
+      color: #2c3e50;
+      font-size: 1.8em;
+      margin-bottom: 14px;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 8px;
+    }
 
-        .highlight-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
+    .mm-section h3 {
+      color: #34495e;
+      font-size: 1.35em;
+      margin: 20px 0 12px;
+    }
 
-        .highlight-box h3 {
-            color: white;
-            margin-bottom: 15px;
-        }
+    .mm-highlight {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      padding: 18px;
+      border-radius: 14px;
+      margin: 16px 0;
+      text-align: center;
+    }
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 25px 0;
-        }
+    .mm-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 18px 0;
+    }
 
-        .result-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+    .mm-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 14px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .mm-card:hover { transform: translateY(-3px); }
 
-        .result-card:hover {
-            transform: translateY(-5px);
-        }
+    .mm-acc { font-size: 1.6em; font-weight: 800; color: #27ae60; margin: 8px 0; }
+    .mm-drop { color: #e74c3c; font-weight: 700; }
 
-        .result-card h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
+    .mm-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin: 18px 0;
+    }
+    .mm-imgbox { text-align: center; }
+    .mm-imgbox img {
+      max-width: 100%; height: auto; border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      transition: transform 0.2s ease;
+    }
+    .mm-imgbox img:hover { transform: scale(1.015); }
+    .mm-imgbox h4 { margin: 12px 0; color: #2c3e50; }
 
-        .accuracy {
-            font-size: 2em;
-            font-weight: bold;
-            color: #27ae60;
-            margin: 10px 0;
-        }
+    .mm-dl {
+      background: linear-gradient(135deg, #27ae60, #2ecc71);
+      color: white;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin: 18px 0;
+    }
+    .mm-dl a {
+      display: inline-block;
+      background: white;
+      color: #27ae60;
+      padding: 10px 18px;
+      text-decoration: none;
+      border-radius: 24px;
+      font-weight: 700;
+      margin: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .mm-dl a:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(0,0,0,0.15); }
 
-        .drop {
-            color: #e74c3c;
-            font-weight: 600;
-        }
+    .mm-footer {
+      text-align: center;
+      padding: 20px;
+      color: rgba(255,255,255,0.85);
+    }
 
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 25px;
-            margin: 25px 0;
-        }
-
-        .image-container {
-            text-align: center;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .image-container img:hover {
-            transform: scale(1.02);
-        }
-
-        .image-container h4 {
-            margin: 15px 0;
-            color: #2c3e50;
-        }
-
-        .download-section {
-            background: linear-gradient(135deg, #27ae60, #2ecc71);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            margin: 25px 0;
-        }
-
-        .download-section h3 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .download-btn {
-            display: inline-block;
-            background: white;
-            color: #27ae60;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .methodology {
-            background: rgba(248, 249, 250, 0.9);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .methodology h4 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-        }
-
-        .methodology ul {
-            margin-left: 20px;
-        }
-
-        .methodology li {
-            margin: 8px 0;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        @media (max-width: 768px) {
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .image-gallery {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .mm-nav ul { flex-direction: column; align-items: center; gap: 8px; }
+      .mm-gallery { grid-template-columns: 1fr; }
+      .mm-results { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>Multi-Modal Sensory Deprivation Study</h1>
-            <p>A computational investigation of how convolutional neural networks adapt to different types of sensory deprivation, exploring cross-modal learning and neural adaptation mechanisms.</p>
+  <main class="mm-page">
+    <div class="mm-container">
+      <!-- Local nav back to site -->
+      <div class="mm-nav" style="margin-bottom:14px;">
+        <ul>
+          <li><a href="index.html">← Back to Home</a></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#figures">Figures</a></li>
+          <li><a href="#downloads">Downloads</a></li>
+        </ul>
+      </div>
+
+      <!-- Header -->
+      <header class="mm-header">
+        <h1>Multi-Modal Sensory Deprivation Study</h1>
+        <p>A computational investigation of how convolutional neural networks adapt to different types of sensory deprivation, exploring cross-modal learning and neural adaptation mechanisms.</p>
+      </header>
+
+      <!-- Overview -->
+      <section class="mm-section" id="overview">
+        <h2>Research Overview</h2>
+        <p>This study investigates the effects of multi-modal sensory deprivation on the learning capabilities and performance of convolutional neural networks (CNNs). We extend previous work on vertical edge deprivation to explore three distinct deprivation types: visual (vertical edge masking), spatial (noise addition), and temporal (Gaussian blurring).</p>
+        <div class="mm-highlight">
+          <h3>Key Finding</h3>
+          <p>CNNs exhibit robustness to individual sensory impairments but show cumulative effects under multi-modal deprivation, suggesting interactions between deprivation types.</p>
         </div>
-
-        <!-- Navigation -->
-        <div class="nav">
-            <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#results">Results</a></li>
-                <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#figures">Figures</a></li>
-                <li><a href="#downloads">Downloads</a></li>
-            </ul>
+        <div>
+          <h3>Research Questions</h3>
+          <ul>
+            <li>How do different types of sensory deprivation affect CNN performance?</li>
+            <li>What are the cumulative effects of multi-modal deprivation?</li>
+            <li>How do networks adapt to compromised sensory inputs?</li>
+            <li>What insights does this yield for AI robustness and computational neuroscience?</li>
+          </ul>
         </div>
+      </section>
 
-        <!-- Overview Section -->
-        <div class="section" id="overview">
-            <h2>Research Overview</h2>
-            <p>This study investigates the effects of multi-modal sensory deprivation on the learning capabilities and performance of convolutional neural networks (CNNs). We extend previous work on vertical edge deprivation to explore three distinct deprivation types: visual (vertical edge masking), spatial (noise addition), and temporal (Gaussian blurring).</p>
-            
-            <div class="highlight-box">
-                <h3>Key Finding</h3>
-                <p>CNNs exhibit remarkable robustness to individual sensory impairments but show cumulative effects under multi-modal deprivation, suggesting complex interactions between different deprivation types.</p>
-            </div>
-
-            <div class="methodology">
-                <h4>Research Questions:</h4>
-                <ul>
-                    <li>How do different types of sensory deprivation affect CNN performance?</li>
-                    <li>What are the cumulative effects of multi-modal deprivation?</li>
-                    <li>How do neural networks adapt to compromised sensory inputs?</li>
-                    <li>What insights can this provide for AI robustness and computational neuroscience?</li>
-                </ul>
-            </div>
+      <!-- Results -->
+      <section class="mm-section" id="results">
+        <h2>Key Results</h2>
+        <div class="mm-results">
+          <div class="mm-card"><h4>Baseline Model</h4><div class="mm-acc">99.27%</div><p>Normal training (no deprivation)</p></div>
+          <div class="mm-card"><h4>Visual Deprivation</h4><div class="mm-acc">98.75%</div><div class="mm-drop">-0.52% drop</div><p>Vertical edge masking</p></div>
+          <div class="mm-card"><h4>Spatial Deprivation</h4><div class="mm-acc">99.23%</div><div class="mm-drop">-0.04% drop</div><p>Noise addition</p></div>
+          <div class="mm-card"><h4>Temporal Deprivation</h4><div class="mm-acc">99.18%</div><div class="mm-drop">-0.09% drop</div><p>Gaussian blurring</p></div>
+          <div class="mm-card"><h4>Multi-Modal Deprivation</h4><div class="mm-acc">98.33%</div><div class="mm-drop">-0.95% drop</div><p>Combined deprivation</p></div>
         </div>
-
-        <!-- Results Section -->
-        <div class="section" id="results">
-            <h2>Key Results</h2>
-            
-            <div class="results-grid">
-                <div class="result-card">
-                    <h4>Baseline Model</h4>
-                    <div class="accuracy">99.27%</div>
-                    <p>Normal training (no deprivation)</p>
-                </div>
-                
-                <div class="result-card">
-                    <h4>Visual Deprivation</h4>
-                    <div class="accuracy">98.75%</div>
-                    <div class="drop">-0.52% drop</div>
-                    <p>Vertical edge masking</p>
-                </div>
-                
-                <div class="result-card">
-                    <h4>Spatial Deprivation</h4>
-                    <div class="accuracy">99.23%</div>
-                    <div class="drop">-0.04% drop</div>
-                    <p>Noise addition</p>
-                </div>
-                
-                <div class="result-card">
-                    <h4>Temporal Deprivation</h4>
-                    <div class="accuracy">99.18%</div>
-                    <div class="drop">-0.09% drop</div>
-                    <p>Gaussian blurring</p>
-                </div>
-                
-                <div class="result-card">
-                    <h4>Multi-Modal Deprivation</h4>
-                    <div class="accuracy">98.33%</div>
-                    <div class="drop">-0.95% drop</div>
-                    <p>Combined deprivation</p>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <h3>Synergistic Effect Discovered</h3>
-                <p>The multi-modal deprived model showed a 0.95% accuracy drop, which exceeds the sum of individual deprivation effects (0.65%). This suggests that deprivation types interact synergistically, creating cumulative effects that exceed simple additive models.</p>
-            </div>
+        <div class="mm-highlight">
+          <h3>Synergistic Effect</h3>
+          <p>The multi-modal model’s 0.95% drop exceeds the sum of individual drops (≈0.65%), suggesting synergy rather than simple additivity.</p>
         </div>
+      </section>
 
-        <!-- Methodology Section -->
-        <div class="section" id="methodology">
-            <h2>Methodology</h2>
-            
-            <h3>Dataset & Architecture</h3>
-            <p>We used the MNIST handwritten digit dataset (70,000 images) and designed a MultiModalCNN architecture with two convolutional layers, fusion layers, and classification layers. The model was trained using AdamW optimizer with learning rate scheduling and early stopping.</p>
-            
-            <h3>Deprivation Framework</h3>
-            <div class="methodology">
-                <h4>Three Deprivation Types:</h4>
-                <ul>
-                    <li><strong>Visual:</strong> Sobel-x kernel edge detection with pixel masking (threshold: 0.25)</li>
-                    <li><strong>Spatial:</strong> Gaussian noise addition (σ = 0.3)</li>
-                    <li><strong>Temporal:</strong> 5×5 Gaussian blur kernel (σ = 1.0)</li>
-                </ul>
-            </div>
-            
-            <h3>Experimental Design</h3>
-            <p>Five experimental conditions were established with identical hyperparameters and training procedures. Each model was trained for up to 12 epochs with early stopping based on validation performance.</p>
+      <!-- Methodology -->
+      <section class="mm-section" id="methodology">
+        <h2>Methodology</h2>
+        <h3>Dataset & Architecture</h3>
+        <p>MNIST (70,000 images). MultiModalCNN with two conv layers, fusion layers, and classification layers. AdamW, LR schedule, early stopping.</p>
+        <h3>Deprivation Framework</h3>
+        <ul>
+          <li><strong>Visual:</strong> Sobel-x edge detection + pixel masking (threshold 0.25)</li>
+          <li><strong>Spatial:</strong> Gaussian noise (σ = 0.3)</li>
+          <li><strong>Temporal:</strong> 5×5 Gaussian blur (σ = 1.0)</li>
+        </ul>
+        <h3>Experimental Design</h3>
+        <p>Five matched conditions, identical hyperparams. Up to 12 epochs with early stopping on validation.</p>
+      </section>
+
+      <!-- Figures -->
+      <section class="mm-section" id="figures">
+        <h2>Research Visualizations</h2>
+        <div class="mm-gallery">
+          <div class="mm-imgbox">
+            <h4>Performance Comparison</h4>
+            <img src="performance_comparison.png" alt="Performance comparison across different deprivation scenarios">
+          </div>
+          <div class="mm-imgbox">
+            <h4>Deprivation Effects Analysis</h4>
+            <img src="deprivation_effects.png" alt="Impact of different deprivation types on model performance">
+          </div>
+          <div class="mm-imgbox">
+            <h4>Training Dynamics</h4>
+            <img src="training_curves_comparison.png" alt="Training and validation curves for all models">
+          </div>
+          <div class="mm-imgbox">
+            <h4>Deprivation Severity</h4>
+            <img src="deprivation_severity.png" alt="Analysis of deprivation complexity and performance impact">
+          </div>
+          <div class="mm-imgbox">
+            <h4>Key Insights Summary</h4>
+            <img src="key_insights_summary.png" alt="Comprehensive summary of research findings">
+          </div>
+          <div class="mm-imgbox">
+            <h4>Confusion Matrices</h4>
+            <img src="confusion_matrices_comparison.png" alt="Error pattern analysis across all models">
+          </div>
         </div>
+      </section>
 
-        <!-- Figures Section -->
-        <div class="section" id="figures">
-            <h2>Research Visualizations</h2>
-            
-            <div class="image-gallery">
-                <div class="image-container">
-                    <h4>Performance Comparison</h4>
-                    <img src="performance_comparison.png" alt="Performance comparison across different deprivation scenarios">
-                </div>
-                
-                <div class="image-container">
-                    <h4>Deprivation Effects Analysis</h4>
-                    <img src="deprivation_effects.png" alt="Impact of different deprivation types on model performance">
-                </div>
-                
-                <div class="image-container">
-                    <h4>Training Dynamics</h4>
-                    <img src="training_curves_comparison.png" alt="Training and validation curves for all models">
-                </div>
-                
-                <div class="image-container">
-                    <h4>Deprivation Severity</h4>
-                    <img src="deprivation_severity.png" alt="Analysis of deprivation complexity and performance impact">
-                </div>
-                
-                <div class="image-container">
-                    <h4>Key Insights Summary</h4>
-                    <img src="key_insights_summary.png" alt="Comprehensive summary of research findings">
-                </div>
-                
-                <div class="image-container">
-                    <h4>Confusion Matrices</h4>
-                    <img src="confusion_matrices_comparison.png" alt="Error pattern analysis across all models">
-                </div>
-            </div>
+      <!-- Downloads -->
+      <section class="mm-section" id="downloads">
+        <h2>Research Data & Publications</h2>
+        <div class="mm-dl">
+          <h3>Download Research Materials</h3>
+          <p>Access data, figures, and detailed analysis from this study.</p>
+          <a href="performance_summary.csv" download>Performance Summary (CSV)</a>
+          <a href="deprivation_analysis.csv" download>Deprivation Analysis (CSV)</a>
+          <a href="severity_analysis.csv" download>Severity Analysis (CSV)</a>
+          <a href="multimodal_deprivation_paper.md" download>Full Research Paper (MD)</a>
         </div>
+      </section>
 
-        <!-- Downloads Section -->
-        <div class="section" id="downloads">
-            <h2>Research Data & Publications</h2>
-            
-            <div class="download-section">
-                <h3>Download Research Materials</h3>
-                <p>Access all the data, figures, and detailed analysis from this study.</p>
-                
-                <a href="performance_summary.csv" class="download-btn" download>Performance Summary (CSV)</a>
-                <a href="deprivation_analysis.csv" class="download-btn" download>Deprivation Analysis (CSV)</a>
-                <a href="severity_analysis.csv" class="download-btn" download>Severity Analysis (CSV)</a>
-                <a href="multimodal_deprivation_paper.md" class="download-btn" download>Full Research Paper (MD)</a>
-            </div>
-
-            <h3>Research Impact</h3>
-            <p>This work contributes to our understanding of how artificial neural systems adapt to sensory challenges and provides a computational model for studying neural plasticity and compensatory learning mechanisms. The findings have implications for:</p>
-            
-            <div class="methodology">
-                <ul>
-                    <li><strong>AI Robustness:</strong> Designing systems that operate under suboptimal conditions</li>
-                    <li><strong>Computational Neuroscience:</strong> Understanding neural adaptation mechanisms</li>
-                    <li><strong>Accessibility:</strong> Informing assistive technology design</li>
-                    <li><strong>Robotics:</strong> Systems operating in degraded sensory environments</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p>Multi-Modal Sensory Deprivation Study | Abdul Rafeh Usmani | Computational Neuroscience Research</p>
-            <p>This research explores the intersection of artificial intelligence and neural adaptation mechanisms.</p>
-        </div>
+      <footer class="mm-footer">
+        <p>Multi-Modal Sensory Deprivation Study | Abdul Rafeh Usmani | Computational Neuroscience Research</p>
+      </footer>
     </div>
+  </main>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  <script>
+    // Smooth scroll within this page (scoped to .mm-page)
+    document.querySelectorAll('.mm-page a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
 
-        // Add scroll effect to sections
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Initialize section animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach((section, index) => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'all 0.6s ease';
-                section.style.transitionDelay = `${index * 0.1}s`;
-            });
-        });
-    </script>
+    // Reveal sections on scroll (scoped)
+    const mmSections = Array.from(document.querySelectorAll('.mm-section'));
+    const reveal = () => {
+      mmSections.forEach((s, i) => {
+        const r = s.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.85) {
+          s.style.opacity = '1';
+          s.style.transform = 'translateY(0)';
+          s.style.transitionDelay = `${i * 0.06}s`;
+        }
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    document.addEventListener('DOMContentLoaded', reveal);
+  </script>
 </body>
 </html>
